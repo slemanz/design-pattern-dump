@@ -1,27 +1,32 @@
 {
 	"folders": [
         {
+            "name": "app",
             "path": "../example-app"
         },
         {
+            "name": "common",
             "path": "../general/common"
         },
         {
+            "name": "interface",
             "path": "../general/interface"
         },
         {
+            "name": "drivers",
             "path": "../general/drivers"
         },
         {
+            "name": "linkers",
             "path": "../general/linkers"
         }
     ],
     "settings": {
         "C_Cpp.default.includePath": [
-            "${workspaceFolder}/../example-app/Inc",
-            "${workspaceFolder}/../general/common/Inc",
-            "${workspaceFolder}/../general/drivers/Inc",
-            "${workspaceFolder}/../general/interface/Inc"
-        ],
+            "${workspaceFolder:app}/Inc/**",
+            "${workspaceFolder:common}/Inc/**",
+            "${workspaceFolder:interface}/drivers/Inc/**",
+            "${workspaceFolder:interface}/Inc/**"
+        ]
     }
 }
