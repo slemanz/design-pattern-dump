@@ -1,6 +1,6 @@
 ENTRY(Reset_Handler)
 
-_Min_Heap_Size = 0x400; /* required amount of heap */
+_Min_Heap_Size = 0x100; /* required amount of heap */
 _Min_Stack_Size = 0x400; /* required amount of stack */
 
 MEMORY
