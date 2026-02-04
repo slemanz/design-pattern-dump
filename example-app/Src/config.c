@@ -31,6 +31,7 @@ const command_t commands_table[] = {
 void config_core(void)
 {
     pool_Init();
+    poolBig_Init();
     uprint_setup(Comm_ProtocolGet(INTERFACE_PROTOCOL_UART2));
     cli_setup(Comm_ProtocolGet(INTERFACE_PROTOCOL_UART2), (command_t*)commands_table, 1);
 

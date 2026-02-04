@@ -1,31 +1,48 @@
 #include "config.h"
-
-#include "bsp/led.h"
-#include "core/simple-timer.h"
-#include "core/cli.h"
 #include "core/uprint.h"
-#include "shared/pool.h"
+#include "sensor.h"
+#include "queue.h"
 
 int main(void)
 {
     config_app();
 
-    simple_timer_t timer_blinky;
-    simple_timer_setup(&timer_blinky, 500, true);
+    Sensor *p_Sensor;
+    p_Sensor = Sensor_Create();
+    p_Sensor->value = 47;
+    uprint("The current value from sensor is %d\r\n", Sensor_getValue(p_Sensor));
+    Sensor_Destroy(p_Sensor);
 
-    uprint("Init the board!\r\n");
 
-    ledPtr_t led1 = led_getByUuid(1);
-    ledPtr_t led2 = led_getByUuid(2);
+    int j, k, h, t;
+
+    /* test normal queue */
+    uprint("Queue test program\r\n");
+
+    Queue *myQ;
+    myQ = Queue_Create();
+    k = 1000;
+    for(j = 0; j < QUEUE_SIZE; j++)
+    {
+        h = myQ->head;
+        myQ->insert(myQ, k);
+        uprint("Inserting %d at position %d, size %d\r\n", k--, h, myQ->getSize(myQ));
+    }
+
+    uprint("Inserted %d elements\r\n", myQ->getSize(myQ));
+
+    for(j = 0; j < QUEUE_SIZE; j++)
+    {
+        t = myQ->tail;
+        k = myQ->remove(myQ);
+        uprint("Removing %d at position %d, size %d\r\n", k, t, myQ->getSize(myQ));
+    }
+
+    uprint("Last item removed = %d\r\n", k);
+    uprint("Current queue size = %d\r\n", myQ->getSize(myQ));
+
 
     while(1)
     {
-        if(simple_timer_has_elapsed(&timer_blinky))
-        {
-            led_toggle(led1);
-            led_toggle(led2);
-        }
-
-        cli_update();
     }
 }
