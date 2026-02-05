@@ -1,0 +1,32 @@
+{
+	"folders": [
+        {
+            "name": "app",
+            "path": "../intro"
+        },
+        {
+            "name": "common",
+            "path": "../general/common"
+        },
+        {
+            "name": "interface",
+            "path": "../general/interface"
+        },
+        {
+            "name": "drivers",
+            "path": "../general/drivers"
+        },
+        {
+            "name": "linkers",
+            "path": "../general/linkers"
+        }
+    ],
+    "settings": {
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder:app}/Inc/**",
+            "${workspaceFolder:common}/Inc/**",
+            "${workspaceFolder:drivers}/Inc/**",
+            "${workspaceFolder:interface}/Inc/**"
+        ]
+    }
+}
