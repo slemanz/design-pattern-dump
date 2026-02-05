@@ -25,7 +25,7 @@
         "C_Cpp.default.includePath": [
             "${workspaceFolder:app}/Inc/**",
             "${workspaceFolder:common}/Inc/**",
-            "${workspaceFolder:interface}/drivers/Inc/**",
+            "${workspaceFolder:drivers}/Inc/**",
             "${workspaceFolder:interface}/Inc/**"
         ]
     }
