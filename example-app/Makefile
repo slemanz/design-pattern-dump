@@ -10,10 +10,10 @@ ROOT_DIR = ../general
 LINKER= -T $(ROOT_DIR)/linkers/STM32F411.ld
 MAP_FILE= -Wl,-Map=$(BUILD_DIR)/$(TARGET).map
 
-CFLAGS= -c $(MACH) -mthumb $(FLOAT) -std=gnu99 -Wall -O0 -g \
+CFLAGS= -c $(MACH) -mthumb $(FLOAT) -std=gnu99 -Wall -O0 -g3 \
 		--specs=nano.specs -ffunction-sections -fdata-sections
 
-LDFLAGS = $(MACH) -mthumb $(FLOAT) --specs=nosys.specs $(LINKER) $(MAP_FILE) -g \
+LDFLAGS = $(MACH) -mthumb $(FLOAT) --specs=nosys.specs $(LINKER) $(MAP_FILE) -g3 \
 			-Wl,--gc-sections -static --specs=nano.specs -Wl,--start-group -lc -lm \
 			-Wl,--end-group -Wl,--print-memory-usage
 
@@ -36,9 +36,6 @@ OBJS		+= $(BUILD_DIR)/main.o
 OBJS		+= $(BUILD_DIR)/config.o
 OBJS		+= $(BUILD_DIR)/syscalls.o
 OBJS		+= $(BUILD_DIR)/startup.o
-
-OBJS		+= $(BUILD_DIR)/queue.o
-OBJS		+= $(BUILD_DIR)/sensor.o
 
 DRIVERS		+= $(BUILD_DIR)/driver_clock.o
 DRIVERS		+= $(BUILD_DIR)/driver_systick.o
